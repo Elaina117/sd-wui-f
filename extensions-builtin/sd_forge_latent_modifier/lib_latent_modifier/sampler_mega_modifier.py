@@ -481,7 +481,7 @@ def green_noise(width, height, generator=None):
     noise *= scale / noise.std()
     return torch.real(noise)
 
-# Algorithm from https://github.com/v0xie/sd-webui-cads/
+# Algorithm from https://github.com/v0xie/sd-wui-cads/
 def add_cads_noise(y, timestep, cads_schedule_start, cads_schedule_end, cads_noise_scale, cads_rescale_factor, cads_rescale=False):
     timestep_as_float = (timestep / 999.0)[:, None, None, None].clone()[0].item()
     gamma = 0.0
@@ -503,7 +503,7 @@ def add_cads_noise(y, timestep, cads_schedule_start, cads_schedule_end, cads_noi
             print("Encountered NaN in cads rescaling. Skipping rescaling.")
     return y
 
-# Algorithm from https://github.com/v0xie/sd-webui-cads/
+# Algorithm from https://github.com/v0xie/sd-wui-cads/
 def add_cads_custom_noise(y, noise, timestep, cads_schedule_start, cads_schedule_end, cads_noise_scale, cads_rescale_factor, cads_rescale=False):
     timestep_as_float = (timestep / 999.0)[:, None, None, None].clone()[0].item()
     gamma = 0.0

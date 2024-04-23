@@ -102,7 +102,7 @@ class A1111Context:
         }
         elem_id = getattr(component, "elem_id", None)
         # Do not set component if it has already been set.
-        # https://github.com/Mikubill/sd-webui-controlnet/issues/2587
+        # https://github.com/Mikubill/sd-wui-controlnet/issues/2587
         if elem_id in id_mapping and getattr(self, id_mapping[elem_id]) is None:
             setattr(self, id_mapping[elem_id], component)
             logger.debug(f"Setting {elem_id}.")

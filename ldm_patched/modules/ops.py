@@ -9,7 +9,7 @@ import contextlib
 from modules_forge import stream
 
 
-# https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/14855/files
+# https://github.com/AUTOMATIC1111/stable-diffusion-wui/pull/14855/files
 stash = {}
 
 

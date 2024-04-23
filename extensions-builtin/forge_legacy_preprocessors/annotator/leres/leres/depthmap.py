@@ -1,5 +1,5 @@
 # Author: thygate
-# https://github.com/thygate/stable-diffusion-webui-depthmap-script
+# https://github.com/thygate/stable-diffusion-wui-depthmap-script
 
 from modules import devices
 from modules.shared import opts

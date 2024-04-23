@@ -1,7 +1,7 @@
 (function () {
     async function checkEditorAvailable() {
         const LOCAL_EDITOR_PATH = '/openpose_editor_index';
-        const REMOTE_EDITOR_PATH = 'https://huchenlei.github.io/sd-webui-openpose-editor/';
+        const REMOTE_EDITOR_PATH = 'https://huchenlei.github.io/sd-wui-openpose-editor/';
 
         async function testEditorPath(path) {
             const res = await fetch(path);
@@ -10,7 +10,7 @@
 
         // Use local editor if the user has the extension installed. Fallback
         // onto remote editor if the local editor is not ready yet.
-        // See https://github.com/huchenlei/sd-webui-openpose-editor/issues/53
+        // See https://github.com/huchenlei/sd-wui-openpose-editor/issues/53
         // for more details.
         return await testEditorPath(LOCAL_EDITOR_PATH) || await testEditorPath(REMOTE_EDITOR_PATH);
     }
@@ -107,7 +107,7 @@
 
                 // Only set href when download link exists and needs an update. `downloadLink`
                 // can be null when user closes preview and click `Upload JSON` button again.
-                // https://github.com/Mikubill/sd-webui-controlnet/issues/2308
+                // https://github.com/Mikubill/sd-wui-controlnet/issues/2308
                 if (downloadLink !== null)
                     downloadLink.href = poseURL;
 

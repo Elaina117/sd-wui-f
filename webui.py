@@ -51,7 +51,7 @@ def api_only_worker():
     )
 
 
-def webui_worker():
+def wui_worker():
     from modules.shared_cmd_options import cmd_opts
 
     launch_api = cmd_opts.api
@@ -79,7 +79,7 @@ def webui_worker():
             if shared.opts.auto_launch_browser == "Remote" or cmd_opts.autolaunch:
                 auto_launch_browser = True
             elif shared.opts.auto_launch_browser == "Local":
-                auto_launch_browser = not cmd_opts.webui_is_non_local
+                auto_launch_browser = not cmd_opts.wui_is_non_local
 
         app, local_url, share_url = shared.demo.launch(
             share=cmd_opts.share,
@@ -144,7 +144,7 @@ def webui_worker():
             shared.demo.close()
             break
 
-        # disable auto launch webui in browser for subsequent UI Reload
+        # disable auto launch wui in browser for subsequent UI Reload
         os.environ.setdefault('SD_WEBUI_RESTARTING', '1')
 
         print('Restarting UI...')
@@ -162,16 +162,16 @@ def api_only():
     Thread(target=api_only_worker, daemon=True).start()
 
 
-def webui():
-    Thread(target=webui_worker, daemon=True).start()
+def wui():
+    Thread(target=wui_worker, daemon=True).start()
 
 
 if __name__ == "__main__":
     from modules.shared_cmd_options import cmd_opts
 
-    if cmd_opts.nowebui:
+    if cmd_opts.nowui:
         api_only()
     else:
-        webui()
+        wui()
 
     main_thread.loop()
