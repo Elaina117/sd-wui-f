@@ -230,7 +230,7 @@ def update_config_states_table(state_name):
 <h2>Config Backup: {config_name}</h2>
 <div><b>Filepath:</b> {filepath}</div>
 <div><b>Created at:</b> {created_date}</div>
-<h2>WebUI State</h2>
+<h2>WUI State</h2>
 <table id="config_state_wui">
     <thead>
         <tr>

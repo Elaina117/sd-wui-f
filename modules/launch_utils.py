@@ -56,11 +56,11 @@ This program is tested with 3.10.6 Python, but you have {major}.{minor}.{micro}.
 If you encounter an error with "RuntimeError: Couldn't install torch." message,
 or any other error regarding unsuccessful package (library) installation,
 please downgrade (or upgrade) to the latest version of 3.10 Python
-and delete current Python and "venv" folder in WebUI's directory.
+and delete current Python and "venv" folder in WUI's directory.
 
 You can download 3.10 Python from here: https://www.python.org/downloads/release/python-3106/
 
-{"Alternatively, use a binary release of WebUI: https://github.com/AUTOMATIC1111/stable-diffusion-wui/releases" if is_windows else ""}
+{"Alternatively, use a binary release of WUI: https://github.com/AUTOMATIC1111/stable-diffusion-wui/releases" if is_windows else ""}
 
 Use --skip-python-version-check to suppress this warning.
 """)
