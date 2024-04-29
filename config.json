@@ -86,7 +86,11 @@
     "Wildcards_subfolder": "None",
     "Workflows_subfolder": "None",
     "Other_subfolder": "None",
+<<<<<<< HEAD
     "tac_tagFile": "extra-quality-tags.csv",
+=======
+    "tac_tagFile": "danbooru.csv",
+>>>>>>> 85c0a0487be0378a50a8811fea6f7e6f78f7ffec
     "tac_active": true,
     "tac_activeIn.txt2img": true,
     "tac_activeIn.img2img": true,
@@ -133,7 +137,11 @@
     "tac_translation.oldFormat": false,
     "tac_translation.searchByTranslation": true,
     "tac_translation.liveTranslation": false,
+<<<<<<< HEAD
     "tac_extra.extraFile": "danbooru.csv",
+=======
+    "tac_extra.extraFile": "extra-quality-tags.csv",
+>>>>>>> 85c0a0487be0378a50a8811fea6f7e6f78f7ffec
     "tac_extra.addMode": "Insert before",
     "tac_chantFile": "demo-chants.json",
     "tac_keymap": "{\n    \"MoveUp\": \"ArrowUp\",\n    \"MoveDown\": \"ArrowDown\",\n    \"JumpUp\": \"PageUp\",\n    \"JumpDown\": \"PageDown\",\n    \"JumpToStart\": \"Home\",\n    \"JumpToEnd\": \"End\",\n    \"ChooseSelected\": \"Enter\",\n    \"ChooseFirstOrSelected\": \"Tab\",\n    \"Close\": \"Escape\"\n}",
@@ -317,12 +325,21 @@
     "infotext_styles": "Apply if any",
     "show_progressbar": true,
     "live_previews_enable": true,
+<<<<<<< HEAD
     "live_previews_image_format": "webp",
     "show_progress_grid": false,
     "show_progress_every_n_steps": -1,
     "show_progress_type": "Approx NN",
     "live_preview_allow_lowvram_full": false,
     "live_preview_content": "Combined",
+=======
+    "live_previews_image_format": "png",
+    "show_progress_grid": true,
+    "show_progress_every_n_steps": 10,
+    "show_progress_type": "Approx NN",
+    "live_preview_allow_lowvram_full": false,
+    "live_preview_content": "Prompt",
+>>>>>>> 85c0a0487be0378a50a8811fea6f7e6f78f7ffec
     "live_preview_refresh_period": 1000.0,
     "live_preview_fast_interrupt": false,
     "js_live_preview_in_modal_lightbox": false,
@@ -436,9 +453,16 @@
     "interrogate_clip_skip_categories": [],
     "interrogate_deepbooru_score_threshold": 0.5,
     "deepbooru_sort_alpha": true,
+<<<<<<< HEAD
     "deepbooru_use_spaces": false,
     "deepbooru_escape": true,
     "deepbooru_filter_tags": "",
     "CLIP_stop_at_last_layers": 2,
     "sd_vae": "ClearVAE_V2.3.safetensors"
+=======
+    "deepbooru_use_spaces": true,
+    "deepbooru_escape": true,
+    "deepbooru_filter_tags": "",
+    "CLIP_stop_at_last_layers": 2
+>>>>>>> 85c0a0487be0378a50a8811fea6f7e6f78f7ffec
 }
