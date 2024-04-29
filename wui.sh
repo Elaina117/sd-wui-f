@@ -35,10 +35,10 @@ then
     install_dir="$SCRIPT_DIR"
 fi
 
-# Name of the subdirectory (defaults to stable-diffusion-wui)
+# Name of the subdirectory (defaults to sd-wui)
 if [[ -z "${clone_dir}" ]]
 then
-    clone_dir="stable-diffusion-wui"
+    clone_dir="sd-wui"
 fi
 
 # python3 executable
@@ -69,7 +69,7 @@ fi
 # this script cannot be run as root by default
 can_run_as_root=0
 
-# read any command line flags to the wui.sh script
+# read any command line flags to the webui.sh script
 while getopts "f" flag > /dev/null 2>&1
 do
     case ${flag} in
@@ -190,9 +190,9 @@ then
     cd "${clone_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"; exit 1; }
 else
     printf "\n%s\n" "${delimiter}"
-    printf "Clone stable-diffusion-wui"
+    printf "Clone sd-wui"
     printf "\n%s\n" "${delimiter}"
-    "${GIT}" clone https://github.com/AUTOMATIC1111/stable-diffusion-wui.git "${clone_dir}"
+    "${GIT}" clone https://github.com/AUTOMATIC1111/sd-wui.git "${clone_dir}"
     cd "${clone_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"; exit 1; }
 fi
 

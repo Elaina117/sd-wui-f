@@ -144,7 +144,7 @@ def wui_worker():
             shared.demo.close()
             break
 
-        # disable auto launch wui in browser for subsequent UI Reload
+        # disable auto launch webui in browser for subsequent UI Reload
         os.environ.setdefault('SD_WUI_RESTARTING', '1')
 
         print('Restarting UI...')
@@ -162,16 +162,16 @@ def api_only():
     Thread(target=api_only_worker, daemon=True).start()
 
 
-def wui():
+def webui():
     Thread(target=wui_worker, daemon=True).start()
 
 
 if __name__ == "__main__":
     from modules.shared_cmd_options import cmd_opts
 
-    if cmd_opts.nowui:
+    if cmd_opts.nowebui:
         api_only()
     else:
-        wui()
+        webui()
 
     main_thread.loop()

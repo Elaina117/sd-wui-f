@@ -1,5 +1,5 @@
 """
-Supports saving and restoring wui and extensions from a known working set of commits
+Supports saving and restoring webui and extensions from a known working set of commits
 """
 
 import os
@@ -52,7 +52,7 @@ def get_wui_config():
         if os.path.exists(os.path.join(script_path, ".git")):
             wui_repo = git.Repo(script_path)
     except Exception:
-        errors.report(f"Error reading wui git info from {script_path}", exc_info=True)
+        errors.report(f"Error reading webui git info from {script_path}", exc_info=True)
 
     wui_remote = None
     wui_commit_hash = None
@@ -107,22 +107,22 @@ def get_config():
 
     return {
         "created_at": creation_time,
-        "wui": wui_config,
+        "webui": wui_config,
         "extensions": ext_config
     }
 
 
 def restore_wui_config(config):
-    print("* Restoring wui state...")
+    print("* Restoring webui state...")
 
-    if "wui" not in config:
-        print("Error: No wui data saved to config")
+    if "webui" not in config:
+        print("Error: No webui data saved to config")
         return
 
-    wui_config = config["wui"]
+    wui_config = config["webui"]
 
     if "commit_hash" not in wui_config:
-        print("Error: No commit saved to wui config")
+        print("Error: No commit saved to webui config")
         return
 
     wui_commit_hash = wui_config.get("commit_hash", None)
@@ -132,15 +132,15 @@ def restore_wui_config(config):
         if os.path.exists(os.path.join(script_path, ".git")):
             wui_repo = git.Repo(script_path)
     except Exception:
-        errors.report(f"Error reading wui git info from {script_path}", exc_info=True)
+        errors.report(f"Error reading webui git info from {script_path}", exc_info=True)
         return
 
     try:
         wui_repo.git.fetch(all=True)
         wui_repo.git.reset(wui_commit_hash, hard=True)
-        print(f"* Restored wui to commit {wui_commit_hash}.")
+        print(f"* Restored webui to commit {wui_commit_hash}.")
     except Exception:
-        errors.report(f"Error restoring wui to commit{wui_commit_hash}")
+        errors.report(f"Error restoring webui to commit{wui_commit_hash}")
 
 
 def restore_extension_config(config):

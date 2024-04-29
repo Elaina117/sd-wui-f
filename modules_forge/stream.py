@@ -1,4 +1,4 @@
-# https://github.com/AUTOMATIC1111/stable-diffusion-wui/pull/14855
+# https://github.com/AUTOMATIC1111/sd-wui/pull/14855
 
 import torch
 

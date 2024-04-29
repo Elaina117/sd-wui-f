@@ -1,4 +1,4 @@
-# this scripts installs necessary requirements and launches main program in wui.py
+# this scripts installs necessary requirements and launches main program in webui.py
 import logging
 import re
 import subprocess
@@ -56,11 +56,11 @@ This program is tested with 3.10.6 Python, but you have {major}.{minor}.{micro}.
 If you encounter an error with "RuntimeError: Couldn't install torch." message,
 or any other error regarding unsuccessful package (library) installation,
 please downgrade (or upgrade) to the latest version of 3.10 Python
-and delete current Python and "venv" folder in WUI's directory.
+and delete current Python and "venv" folder in WebUI's directory.
 
 You can download 3.10 Python from here: https://www.python.org/downloads/release/python-3106/
 
-{"Alternatively, use a binary release of WUI: https://github.com/AUTOMATIC1111/stable-diffusion-wui/releases" if is_windows else ""}
+{"Alternatively, use a binary release of WebUI: https://github.com/AUTOMATIC1111/sd-wui/releases" if is_windows else ""}
 
 Use --skip-python-version-check to suppress this warning.
 """)
@@ -219,7 +219,7 @@ def git_pull_recursive(dir):
 def version_check(commit):
     try:
         import requests
-        commits = requests.get('https://api.github.com/repos/AUTOMATIC1111/stable-diffusion-wui/branches/master').json()
+        commits = requests.get('https://api.github.com/repos/AUTOMATIC1111/sd-wui/branches/master').json()
         if commit != "<none>" and commits['commit']['sha'] != commit:
             print("--------------------------------------------------------")
             print("| You are not up to date with the most recent release. |")
@@ -402,7 +402,7 @@ def prepare_environment():
     blip_commit_hash = os.environ.get('BLIP_COMMIT_HASH', "48211a1594f1321b00f14c9f7a5b4813144b2fb9")
 
     try:
-        # the existence of this file is a signal to wui.sh/bat that wui needs to be restarted when it stops execution
+        # the existence of this file is a signal to webui.sh/bat that webui needs to be restarted when it stops execution
         os.remove(os.path.join(script_path, "tmp", "restart"))
         os.environ.setdefault('SD_WUI_RESTARTING', '1')
     except OSError:
@@ -452,7 +452,7 @@ def prepare_environment():
 
     os.makedirs(os.path.join(script_path, dir_repos), exist_ok=True)
 
-    git_clone(assets_repo, repo_dir('stable-diffusion-wui-assets'), "assets", assets_commit_hash)
+    git_clone(assets_repo, repo_dir('sd-wui-assets'), "assets", assets_commit_hash)
     git_clone(stable_diffusion_repo, repo_dir('stable-diffusion-stability-ai'), "Stable Diffusion", stable_diffusion_commit_hash)
     git_clone(stable_diffusion_xl_repo, repo_dir('generative-models'), "Stable Diffusion XL", stable_diffusion_xl_commit_hash)
     git_clone(k_diffusion_repo, repo_dir('k-diffusion'), "K-diffusion", k_diffusion_commit_hash)
@@ -537,12 +537,12 @@ def configure_forge_reference_checkout(a1111_home: Path):
 
 
 def start():
-    print(f"Launching {'API server' if '--nowui' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
+    print(f"Launching {'API server' if '--nowebui' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
     import wui
-    if '--nowui' in sys.argv:
-        wui.api_only()
+    if '--nowebui' in sys.argv:
+        webui.api_only()
     else:
-        wui.wui()
+        webui.webui()
 
     from modules_forge import main_thread
 

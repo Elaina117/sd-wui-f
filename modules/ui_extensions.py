@@ -63,13 +63,13 @@ def save_config_state(name):
     current_config_state["name"] = name
     timestamp = datetime.now().strftime('%Y_%m_%d-%H_%M_%S')
     filename = os.path.join(config_states_dir, f"{timestamp}_{name}.json")
-    print(f"Saving backup of wui/extension state to {filename}.")
+    print(f"Saving backup of webui/extension state to {filename}.")
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(current_config_state, f, indent=4, ensure_ascii=False)
     config_states.list_config_states()
     new_value = next(iter(config_states.all_config_states.keys()), "Current")
     new_choices = ["Current"] + list(config_states.all_config_states.keys())
-    return gr.Dropdown.update(value=new_value, choices=new_choices), f"<span>Saved current wui/extension state to \"{filename}\"</span>"
+    return gr.Dropdown.update(value=new_value, choices=new_choices), f"<span>Saved current webui/extension state to \"{filename}\"</span>"
 
 
 def restore_config_state(confirmed, config_state_name, restore_type):
@@ -82,13 +82,13 @@ def restore_config_state(confirmed, config_state_name, restore_type):
 
     config_state = config_states.all_config_states[config_state_name]
 
-    print(f"*** Restoring wui state from backup: {restore_type} ***")
+    print(f"*** Restoring webui state from backup: {restore_type} ***")
 
     if restore_type == "extensions" or restore_type == "both":
         shared.opts.restore_config_state_file = config_state["filepath"]
         shared.opts.save(shared.config_filename)
 
-    if restore_type == "wui" or restore_type == "both":
+    if restore_type == "webui" or restore_type == "both":
         config_states.restore_wui_config(config_state)
 
     shared.state.request_restart()
@@ -201,10 +201,10 @@ def update_config_states_table(state_name):
     filepath = config_state.get("filepath", "<unknown>")
 
     try:
-        wui_remote = config_state["wui"]["remote"] or ""
-        wui_branch = config_state["wui"]["branch"]
-        wui_commit_hash = config_state["wui"]["commit_hash"] or "<unknown>"
-        wui_commit_date = config_state["wui"]["commit_date"]
+        wui_remote = config_state["webui"]["remote"] or ""
+        wui_branch = config_state["webui"]["branch"]
+        wui_commit_hash = config_state["webui"]["commit_hash"] or "<unknown>"
+        wui_commit_date = config_state["webui"]["commit_date"]
         if wui_commit_date:
             wui_commit_date = time.asctime(time.gmtime(wui_commit_date))
         else:
@@ -230,7 +230,7 @@ def update_config_states_table(state_name):
 <h2>Config Backup: {config_name}</h2>
 <div><b>Filepath:</b> {filepath}</div>
 <div><b>Created at:</b> {created_date}</div>
-<h2>WUI State</h2>
+<h2>WebUI State</h2>
 <table id="config_state_wui">
     <thead>
         <tr>
@@ -649,7 +649,7 @@ def create_ui():
                 with gr.Row(elem_id="extensions_backup_top_row"):
                     config_states_list = gr.Dropdown(label="Saved Configs", elem_id="extension_backup_saved_configs", value="Current", choices=["Current"] + list(config_states.all_config_states.keys()))
                     modules.ui.create_refresh_button(config_states_list, config_states.list_config_states, lambda: {"choices": ["Current"] + list(config_states.all_config_states.keys())}, "refresh_config_states")
-                    config_restore_type = gr.Radio(label="State to restore", choices=["extensions", "wui", "both"], value="extensions", elem_id="extension_backup_restore_type")
+                    config_restore_type = gr.Radio(label="State to restore", choices=["extensions", "webui", "both"], value="extensions", elem_id="extension_backup_restore_type")
                     config_restore_button = gr.Button(value="Restore Selected Config", variant="primary", elem_id="extension_backup_restore")
                 with gr.Row(elem_id="extensions_backup_top_row2"):
                     config_save_name = gr.Textbox("", placeholder="Config Name", show_label=False)

@@ -9,7 +9,7 @@ test_outputs_path = os.path.dirname(__file__) + "/test_outputs"
 
 def pytest_configure(config):
     # We don't want to fail on Py.test command line arguments being
-    # parsed by wui:
+    # parsed by webui:
     os.environ.setdefault("IGNORE_CMD_ARGS_ERRORS", "1")
 
 
