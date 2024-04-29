@@ -540,9 +540,9 @@ def start():
     print(f"Launching {'API server' if '--nowebui' in sys.argv else 'Web UI'} with arguments: {' '.join(sys.argv[1:])}")
     import wui
     if '--nowebui' in sys.argv:
-        webui.api_only()
+        wui.api_only()
     else:
-        webui.webui()
+        wui.webui()
 
     from modules_forge import main_thread
 
