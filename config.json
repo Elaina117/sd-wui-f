@@ -1,5 +1,5 @@
 {
-    "sd_model_checkpoint": "komorebimix_v12.safetensors [cea52eb47b]",
+    "sd_model_checkpoint": "",
     "ldsr_steps": 100,
     "ldsr_cached": false,
     "SCUNET_tile": 256,
@@ -458,7 +458,7 @@
     "deepbooru_escape": true,
     "deepbooru_filter_tags": "",
     "CLIP_stop_at_last_layers": 2,
-    "sd_vae": "ClearVAE_V2.3.safetensors"
+    "sd_vae": ""
 =======
     "deepbooru_use_spaces": true,
     "deepbooru_escape": true,
