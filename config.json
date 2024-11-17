@@ -440,6 +440,6 @@
     "deepbooru_escape": true,
     "deepbooru_filter_tags": "",
     "CLIP_stop_at_last_layers": 2,
-    "sd_vae": ""
+    "sd_vae": "",
     "show_waifu2x_accordion": true
 }
